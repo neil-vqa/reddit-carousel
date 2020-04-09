@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Reddit Carousel</title>
+	
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='onepage-scroll.css') }}">
+	<link rel="stylesheet" type='text/css' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type='text/css' href="{{ url_for('static',filename='custom.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link href="https://fonts.googleapis.com/css2?family=Gotu&family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+	
+</head>
+<body>
+	<div class="main">
+		<div class="section" id="section0">
+			<h1 class="title">The Reddit Carousel</h1>
+			<h2 style="text-align: center">A curated Reddit newsfeed crafted into carousels.</h2>
+			<p class="third-line">Neil Van Alino | 2020</p>
+		</div>
+		
+		<div class="section carousel slide carousel-fade" id="section1">
+			<div class="carousel-inner">
+				 <div class="carousel-item active">
+				 	<div class="box">
+				 		<div class="box-content">r/astrophotography</div>
+				 	</div>
+				 	<img src="{{ url_for('static',filename='/pics/pic1.jpg') }}">
+				 </div>
+				 
+				 {% for astro in astros %}
+				 <div class="carousel-item">
+				 	<div class="box">
+				 		<div class="box-content">{{ astro.title }}</div>
+				 		<div class="box-content-2">
+				 		Author: {{ astro.author }} | Upvotes: {{ astro.upvotes }} | <a href="{{ astro.link }}">Go to Reddit post</a>
+				 		</div>
+				 	</div>
+				 	<img src="{{ astro.url }}">
+				 </div>
+				 {% endfor %}	 
+			</div>
+			<a class="carousel-control-prev" href="#section1">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#section1">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+		<div class="section carousel slide" id="section2">
+			<div class="carousel-inner">
+				 <div class="carousel-item active">
+				 	<div class="box">
+				 		<div class="box-content">r/Showerthoughts + r/IAmA<br>+ r/todayilearned</div>
+				 	</div>
+				 	<img src="{{ url_for('static',filename='/pics/pic2.jpg') }}">
+				 </div>
+				 
+				 {% for shower,learn,iam in zip(showers,learns,iams) %}
+				 <div class="carousel-item card-sect-2">
+				 	<div class="card-deck">
+				 		<div class="card">
+				 			<div class="card-header text-center">
+				 				r/{{ shower.sub }}<br><a href="{{ shower.link }}"><small>reddit link</small></a>
+				 			</div>
+				 			<div class="card-body">
+				 				{{ shower.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ shower.author }}</small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ shower.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 		<div class="card">
+				 			<div class="card-header text-center">
+				 				r/{{ learn.sub }}<br><a href="{{ learn.link }}"><small>reddit link</small></a>
+				 			</div>
+				 			<div class="card-body">
+				 				{{ learn.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ learn.author }}</small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ learn.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 		<div class="card">
+				 			<div class="card-header text-center">
+				 				r/{{ iam.sub }}<br><a href="{{ iam.link }}"><small>reddit link</small></a>
+				 			</div>
+				 			<div class="card-body">
+				 				{{ iam.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ iam.author }}</small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ iam.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 	</div>
+				 </div>
+				 {% endfor %}	 
+			</div>
+			<a class="carousel-control-prev" href="#section2">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#section2">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+		<div class="section carousel slide carousel-fade" id="section3">
+			<div class="carousel-inner">
+				 <div class="carousel-item active">
+				 	<div class="box">
+				 		<div class="box-content">r/Art</div>
+				 	</div>
+				 	<img src="{{ url_for('static',filename='/pics/pic3.jpg') }}">
+				 </div>
+				 
+				 {% for art in arts %}
+				 <div class="carousel-item">
+				 	<div class="box">
+				 		<div class="box-content">{{ art.title }}</div>
+				 		<div class="box-content-2">
+				 		Author: {{ art.author }} | Upvotes: {{ art.upvotes }} | <a href="{{ art.link }}">Go to Reddit post</a>
+				 		</div>
+				 	</div>
+				 	<img src="{{ art.url }}">
+				 </div>
+				 {% endfor %}	 
+			</div>
+			<a class="carousel-control-prev" href="#section3">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#section3">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+		<div class="section carousel slide" id="section4">
+			<div class="carousel-inner">
+				 <div class="carousel-item active">
+				 	<div class="box">
+				 		<div class="box-content">r/wholesomememes + r/food<br>+ r/dataisbeautiful</div>
+				 	</div>
+				 	<img src="{{ url_for('static',filename='/pics/pic4.jpg') }}">
+				 </div>
+				 
+				 {% for meme,food,datum in zip(memes,foods,data) %}
+				 <div class="carousel-item card-sect-2">
+				 	<div class="card-deck">
+				 		<div class="card">
+				 			<img class="card-img-top" src="{{ meme.url }}">
+				 			<div class="card-body">
+				 				{{ meme.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ meme.author }}</small><br>
+				 				<small class="text-muted">r/{{ meme.sub }} | <a href="{{ meme.link }}">reddit link</a></small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ meme.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 		<div class="card">
+				 			<img class="card-img-top" src="{{ food.url }}">
+				 			<div class="card-body">
+				 				{{ food.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ food.author }}</small><br>
+				 				<small class="text-muted">r/{{ food.sub }} | <a href="{{ food.link }}">reddit link</a></small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ food.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 		<div class="card">
+				 			<img class="card-img-top" src="{{ datum.url }}">
+				 			<div class="card-body">
+				 				{{ datum.title }}<br><br>
+				 				<small class="text-muted">Posted by: {{ datum.author }}</small><br>
+				 				<small class="text-muted">r/{{ datum.sub }} | <a href="{{ datum.link }}">reddit link</a></small>
+				 			</div>
+				 			<div class="card-footer">
+				 				<small>{{ datum.upvotes }} Upvotes!</small>
+				 			</div>
+				 		</div>
+				 	</div>
+				 </div>
+				 {% endfor %}	 
+			</div>
+			<a class="carousel-control-prev" href="#section4">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#section4">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+		<div class="section carousel slide carousel-fade" id="section5">
+			<div class="carousel-inner">
+				 <div class="carousel-item active">
+				 	<div class="box">
+				 		<div class="box-content">r/imaginarymaps</div>
+				 	</div>
+				 	<img src="{{ url_for('static',filename='/pics/pic5.jpg') }}">
+				 </div>
+				 
+				 {% for map in maps %}
+				 <div class="carousel-item">
+				 	<div class="box">
+				 		<div class="box-content">{{ map.title }}</div>
+				 		<div class="box-content-2">
+				 		Author: {{ map.author }} | Upvotes: {{ map.upvotes }} | <a href="{{ map.link }}">Go to Reddit post</a>
+				 		</div>
+				 	</div>
+				 	<img src="{{ map.url }}">
+				 </div>
+				 {% endfor %}	 
+			</div>
+			<a class="carousel-control-prev" href="#section5">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#section5">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		
+	</div>
+	
+	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://not-an-aardvark.github.io/snoowrap/snoowrap-v1.min.js" type="text/javascript"></script>
+	<script src="{{ url_for('static', filename='jquery.onepage-scroll.js') }}"></script>
+	<script src="{{ url_for('static', filename='app.js') }}" type="text/javascript"></script>
+
+</body>
+</html>
