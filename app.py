@@ -120,7 +120,7 @@ for submission in reddit.subreddit('imaginarymaps').top(time_filter='day', limit
 		pick_map.append(pick)
 
 
-@app.route('/')
+@app.route('/reddit')
 def home():
     return render_template('index.html', astros=pick_astro, arts=pick_art, showers=pick_shower, learns=pick_til, iams=pick_iam, memes=pick_meme, foods=pick_food, data=pick_data, maps=pick_map, zip=zip)
     
