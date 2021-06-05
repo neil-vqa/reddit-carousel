@@ -1,12 +1,13 @@
 from flask import Flask, render_template, url_for
-import praw
+import praw, os
 
 
 app = Flask(__name__)
 
+CLIENT_ID = os.environ.get('REDDIT_CLIENT_ID')
 CLIENT_SECRET = os.environ.get('REDDIT_CLIENT_SECRET')
 
-reddit = praw.Reddit(client_id='iGMNdhNR4e_Atg',
+reddit = praw.Reddit(client_id=CLIENT_ID,
                     client_secret=CLIENT_SECRET,
                     user_agent='web:github.com/neil-vqa/reddit-carousel:v1.0 (by /u/neilthegreatest)')
 
