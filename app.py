@@ -4,9 +4,10 @@ import praw
 
 app = Flask(__name__)
 
+CLIENT_SECRET = os.environ.get('REDDIT_CLIENT_SECRET')
 
 reddit = praw.Reddit(client_id='iGMNdhNR4e_Atg',
-                    client_secret='xkuIbmiS2GHhNr-NkpmzPGRVYMI',
+                    client_secret=CLIENT_SECRET,
                     user_agent='web:github.com/neil-vqa/reddit-carousel:v1.0 (by /u/neilthegreatest)')
 
 pick_astro = []
