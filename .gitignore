@@ -1,1 +1,5 @@
 aux.txt
+.env
+.idea/
+__pycache__/
+venv/
